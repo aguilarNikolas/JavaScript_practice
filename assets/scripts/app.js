@@ -1,7 +1,15 @@
 const  defaultResult = 0;
 let currentResult = defaultResult;
 
-currentResult = (currentResult + 10) * 3 / 2 - 1;
+function addNumbers(num1, num2){
+  const result = num1 + num2;
+//   alert(`The result is ${result}`);
+  return result
+}
+
+const additionResult = addNumbers(1,5);
+
+currentResult = additionResult;
 
 // i can use string concatenation like pyhton
 // let calculationDescription = '('+  defaultResult + '+ 10) * 3 / 2 - 1';
@@ -12,3 +20,4 @@ let calculationDescription = `( ${defaultResult} + 10) * 3 / 2 - 1`;
 
 
 outputResult(currentResult,calculationDescription);
+
