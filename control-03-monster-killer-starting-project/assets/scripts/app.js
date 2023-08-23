@@ -13,15 +13,30 @@ const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
 
 
-const enteredValue = prompt('Maximum life for you and the monster.', '100');
-// console.log(enteredValue);
 
-let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
+let lastLoggedEntry;  
 
-if(isNaN(chosenMaxLife) || chosenMaxLife <= 0){
-    chosenMaxLife = 100;
+function getMaxLifeValues(){
+    const enteredValue = prompt('Maximum life for you and the monster.', '100');
+    const parsedValue = parseInt(enteredValue);
+    if(isNaN(parsedValue) || parsedValue <= 0){
+        throw {message: 'Invalid user input, not a number'};
+    }
+    return parsedValue;
 }
+
+let chosenMaxLife;
+
+try {
+    chosenMaxLife = getMaxLifeValues();
+    
+} catch (error) {
+    console.log(error);
+    chosenMaxLife = 100;   
+    alert('You entered something wrong, default value of 100 was used.'); 
+} 
+
 
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
@@ -233,45 +248,58 @@ function healPlayerHandler(){
 }
 
 function printLogHandler(){
-    //commom for loop
-    // for (let i=0 ; i < 3 ; i++) {
-    //     console.log('-----------');
-    // }
+    // commom for loop
+    for (let i=0 ; i < 3 ; i++) {
+        console.log('-----------');
+    }
 
-    let j = 0;
+    /* let j = 0;
     while (j < 3) {
         console.log(j);
         j++;
     }
+    */
+    // let k = 0;
 
-    let k = 0;
-    do {
-        console.log(k);
+    //you can 'label statements' loops, and when you have nested loops you can 'break' outer loops
+  /*   outerWhile: do {
+        console.log('outer', k);
+        innerFor: for(z = 0; z < 5; z++){
+            if (z === 3) {
+                break outerWhile;                
+            }
+            console.log('inner',z);
+        }
         k++;
-    } while (k < 3);
+    } while (k < 3);  */
+
+
     // for (let i=0 ; i < battleLog.length; i++){
     //     console.log(battleLog[i]);
     // }
     // console.log(battleLog);
     
     //for-of loop (used to itereate arrays)
-    // for(const logEntry of battleLog){
-    //     console.log(logEntry);
-    // }
-
-    let i = 0;
     for(const logEntry of battleLog){
-        console.log(`#${i}`);
-        //for-in loop (used to itereate objects)
-        for (const key in logEntry){
-            console.log(`${key} => ${logEntry[key]}`); //access to the values stored in the keys of an object
-        }
-        i++;
+        console.log(logEntry);
     }
 
-    
-    
+    // let i = 0;
+    // for(const logEntry of battleLog){
 
+    //     if((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i){
+    //         console.log(`#${i}`);
+    //     //for-in loop (used to itereate objects)
+    //         for (const key in logEntry){
+    //             console.log(`${key} => ${logEntry[key]}`); //access to the values stored in the keys of an object
+    //         }
+    //         lastLoggedEntry = i;
+    //         break;
+    //     }
+    //     i++;
+    // }
+
+    
 }
 
 
