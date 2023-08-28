@@ -100,7 +100,7 @@ startGameBtn.addEventListener('click', function () {
 //Spread Operator '...', is used to copy arrays and object with its values -> {...example}
 //using the Spread Operator inside the parameters list, I can send many arguments as I want that will merge into an array "kind of dynamic parameters list "
 //they call REST operator
-const sumUp = (resultHandler, ...numbers) =>{
+const combine = (resultHandler, operation, ...numbers) =>{
 
     //function inside function - can be used only in this Block Scope
     const validateNumber = (number) =>{
@@ -108,19 +108,36 @@ const sumUp = (resultHandler, ...numbers) =>{
     };
 
     let sum = 0;
+    let text;
     for(const num of numbers){
-        sum += validateNumber(num);
+        if(operation === 'ADD'){
+            sum += validateNumber(num);
+
+        }else{
+            sum -= validateNumber(num);
+        }
+    }
+    resultHandler(sum); //, operation === 'ADD' ? 'The result after adding is ' : 'The result after subtracting is '
+}
+
+/* const subtractUp = function(resultHandler, ...numbers){
+    let sum = 0;
+    for(const num of numbers){
+        sum -= num;
     }
     resultHandler(sum);
 }
 
-const showResult = (result) => {
-    alert('The result after adding all numbers is: ' + result);
+ */
+
+const showResult = (messageText, result) => {
+    alert(messageText + ' ' + result);
 }
 
-sumUp(showResult, 1, 4, 7, 8, 15,22,43,54,123);
+//this 'bind' method will add the text to the first parameter at the future function when its called 
+combine(showResult.bind(this, 'The result after adding all numbers is: '),'ADD', 1, 4, 7, 8, 15,22,43,54,123);
 
-
+combine(showResult.bind(this, 'The result after subtracting all numbers is: '),'SUBTRACT',1,2,5);
 
 //this is a function declaration/Function Statement
 /* function startGame() {

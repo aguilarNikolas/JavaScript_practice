@@ -126,6 +126,11 @@ function divide() {
 // I also can use  Dolar Signal and curly braces and back-ticks (usando crase), or breaking lines 
 // let calculationDescription = `( ${defaultResult} + 10) * 3 / 2 - 1`;
 
+function calculate(operation){
+  
+}
+
+
 
 addBtn.addEventListener('click', add);
 
