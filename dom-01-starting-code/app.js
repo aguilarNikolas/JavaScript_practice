@@ -14,3 +14,27 @@ const listItemElements = document.getElementsByTagName('li');
 for(const listItemEl of listItemElements){
     console.dir(listItemEl);
 }
+
+
+const section = document.querySelector('section');
+// the style below overwrites the css style becaus inline delaration has more specificity
+// section.style.backgroundColor = 'blue';
+
+section.className = 'red-bg';
+
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+  /*   if(section.className === 'red-bg visible'){
+        section.className = 'red-bg invisible'
+    }else{
+        section.className = 'red-bg visible'
+    } */
+
+    // section.classList.toggle('visible');
+    section.classList.toggle('invisible');
+   
+})
+
+
+const newLi1 = document.createElement('li')

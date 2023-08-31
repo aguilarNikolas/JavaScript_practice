@@ -7,11 +7,11 @@ task1Query.style.color = 'white';
 
 const title1 = document.querySelector('title');
 
-// const title2 =  document.head.textContent;
-const title2 = document.getElementsByTagName('title');
+// or a different way
+const title2 =  document.head.querySelector('title')
+title2.textContent = 'Assignment - Solved!';
 
-// title2.textContent = 'Assignment - Solved!';
-title1.textContent = 'Assignment - Solved!';
+// title1.textContent = 'Assignment - Solved!';
 
 
 const h1 = document.querySelector('h1');
